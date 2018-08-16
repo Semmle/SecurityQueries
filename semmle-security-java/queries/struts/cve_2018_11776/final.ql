@@ -21,7 +21,7 @@ class MappingCfg extends DataFlow::Configuration {
   }
   
   override predicate isSource(DataFlow::Node source) {
-    isSourceNode(source)
+    isRemoteUserInputSource(source)
   }
   
   override predicate isSink(DataFlow::Node sink) {

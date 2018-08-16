@@ -16,8 +16,6 @@ class ActionProxyGetMethod extends Method {
 }
 
 /** Holds if `source` is a remote user input in struts. */
-predicate isSourceNode(DataFlow::Node source) {
-   exists(MethodAccess ma | ma.getMethod() instanceof ActionProxyGetMethod |
-    source.asExpr() = ma
-  )
+predicate isRemoteUserInputSource(DataFlow::Node source) {
+   source.asExpr().(MethodAccess).getMethod() instanceof ActionProxyGetMethod
 }
