@@ -41,4 +41,4 @@ class MappingCfg extends DataFlow::Configuration {
 
 from MappingCfg cfg, DataFlow::PathNode source, DataFlow::PathNode sink
 where cfg.hasFlowPath(source, sink)
-select source,source, sink, "$@ flows to here and is used in OGNL.", source, "User input"
+select source, source, sink, "This user input flows to an $@.", sink, "OGNL sink"
