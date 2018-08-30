@@ -8,3 +8,12 @@ abstract class MapMethodSanitizer extends DataFlow::Node {
 /** A `Node` that is inside the `toString` method of subclasses.*/
 abstract class ToStringSanitizer extends DataFlow::Node {
 }
+
+/** Holds if `node` is inside test code. */
+predicate isNodeInTestCode(DataFlow::Node node) {
+  node.getEnclosingCallable() instanceof TestMethod
+  or
+  node.getEnclosingCallable().getDeclaringType() instanceof TestClass
+  or
+  node.asExpr().getFile().getAbsolutePath().toLowerCase().matches("%test%")
+}
