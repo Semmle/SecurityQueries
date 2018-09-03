@@ -2,6 +2,7 @@ import java
 import semmle.code.java.dataflow.DataFlow
 import semmle.code.java.dataflow.DefUse
 import lib.dataflow_extra.CollectionsEdges
+import semmle.code.java.dataflow.TaintTracking
 
 /** General dataflow edges that are useful for hunting vulnerabilities but not included in the standard library.*/
 
@@ -27,5 +28,6 @@ predicate taintFieldFromQualifier(DataFlow::Node n1, DataFlow::Node n2) {
 /** Bundle up the less risky edges that are usually ok for bug hunting.*/
 predicate standardExtraEdges(DataFlow::Node node1, DataFlow::Node node2) {
   collectionsGetEdge(node1, node2) or
-  forLoopEdge(node1, node2)
+  forLoopEdge(node1, node2) or
+  TaintTracking::localAdditionalTaintStep(node1, node2)
 }

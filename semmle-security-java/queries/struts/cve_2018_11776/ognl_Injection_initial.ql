@@ -34,7 +34,6 @@ class OgnlInjectionCfg extends DataFlow::Configuration {
   override predicate isAdditionalFlowStep(DataFlow::Node node1, DataFlow::Node node2) {
     standardExtraEdges(node1, node2) or
     collectionsPutEdge(node1, node2) or
-    TaintTracking::localTaintStep(node1, node2) or
     taintStringFieldFromQualifier(node1, node2) or
     isTaintedFieldStep(node1, node2)
   }
