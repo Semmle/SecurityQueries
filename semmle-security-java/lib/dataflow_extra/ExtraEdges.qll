@@ -25,9 +25,17 @@ predicate taintFieldFromQualifier(DataFlow::Node n1, DataFlow::Node n2) {
   )
 }
 
+/** Tracks from an object to the output of its `toString` method. */
+predicate toStringStep(DataFlow::Node node1, DataFlow::Node node2) {
+  exists(MethodAccess ma | ma.getMethod().getName() = "toString" and
+      ma = node2.asExpr() and ma.getQualifier() = node1.asExpr()
+  )
+}
+
 /** Bundle up the less risky edges that are usually ok for bug hunting.*/
 predicate standardExtraEdges(DataFlow::Node node1, DataFlow::Node node2) {
   collectionsGetEdge(node1, node2) or
   forLoopEdge(node1, node2) or
+  toStringStep(node1, node2) or
   TaintTracking::localAdditionalTaintStep(node1, node2)
 }
