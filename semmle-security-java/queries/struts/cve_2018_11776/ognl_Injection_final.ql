@@ -80,7 +80,7 @@ predicate restfulMapperSanitizer(DataFlow::Node node) {
    node.asExpr().getEnclosingCallable().getDeclaringType().hasName("RestfulActionMapper")
 }
 
-/** Filters out cases where jsp file is exposed. */
+/** Filters out cases where jsp file is exposed. Not considered as vulnerable, see https://issues.apache.org/jira/browse/WW-4945*/
 predicate tagUtilsSanitizer(DataFlow::Node node) {
   node.asExpr().getEnclosingCallable().getDeclaringType().hasName("TagUtils") and
   node.asExpr().getEnclosingCallable().hasName("buildNamespace")
