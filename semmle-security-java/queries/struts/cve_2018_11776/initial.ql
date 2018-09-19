@@ -29,7 +29,7 @@ class MappingCfg extends DataFlow::Configuration {
   }
   
   override predicate isAdditionalFlowStep(DataFlow::Node node1, DataFlow::Node node2) {
-    TaintTracking::localTaintStep(node1, node2) or
+    TaintTracking::localAdditionalTaintStep(node1, node2) or
     isTaintedFieldStep(node1, node2)
   }
 }
