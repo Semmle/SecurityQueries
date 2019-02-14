@@ -6,5 +6,5 @@ These queries should be used with the free [QL for Eclispe plugin](https://help.
 
 ## Using the Path Explorer
 
-Many queries in this repository makes use of the Taint-Tracking library in QL, which allows you to visualize the code path that goes from a tainted source to a dangerous sink. To enable this, click `Window` on the Eclipse menu bar, then click `Show View > Other... > Semmle > Path Explorer` to display the Path Explorer window. This will show you the tainted path when you click on a query result.
+Many queries in this repository makes use of the taint-tracking library in QL, which allows you to visualize the code path that goes from a tainted source to a dangerous sink. To enable this, click `Window` on the Eclipse menu bar, then click `Show View > Other... > Semmle > Path Explorer` to display the Path Explorer window. This will show you the tainted path when you click on a query result.
 
